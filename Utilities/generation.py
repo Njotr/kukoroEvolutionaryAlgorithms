@@ -32,19 +32,18 @@ def crossover(problem, population, chance_to_breed, mutation_chance):
 def run_generations(problem, population, chance_to_breed, mutation_chance, iteration_amount):
     best_scores = []
     worst_scores = []
+    divider = len(problem.row_constraints)+len(problem.col_constraints)
     for i in range(iteration_amount):
         population = crossover(problem, population, chance_to_breed, mutation_chance)
         best_scores.append(problem.get_solutions_fitness_score(population[1]))
         worst_scores.append(problem.get_solutions_fitness_score(population[len(population)-1]))
-    print(best_scores)
-    print(worst_scores)
 
     sns.set_style("whitegrid")
-    plt.legend(loc='upper right')
-    plt.plot(best_scores, color='green', label="Best Fitness")
-    plt.plot(worst_scores, color='red', label="Worst Fitness")
+    plt.plot([score/divider for score in best_scores], color='green', label="Best Fitness")
+    plt.plot([score/divider for score in worst_scores], color='red', label="Worst Fitness")
     plt.xlabel('Generations')
     plt.ylabel('Fitness')
-    plt.title('Fitness per generation')
+    plt.title(str(problem.serial_number) + ' - Fitness per generation')
+    plt.legend(loc='upper right')
     plt.show()
     plt.close()

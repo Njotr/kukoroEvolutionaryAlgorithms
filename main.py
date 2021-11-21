@@ -1,18 +1,28 @@
-import deap
-from deap import algorithms
-from deap import base
-from deap import creator
-from deap import tools
-from datetime import time, datetime
-from functools import partial
-import matplotlib.pyplot as plt
-
 from Utilities.generation import run_generations
 from Utilities.initiation import init_population
-from Utilities.problems import kakuro_622655, kakuro_357465
+from Utilities.problems import kakuro_622655, kakuro_357465, kakuro_383659
 
-# pop = init_population(500, kakuro_622655)
-# run_generations(kakuro_622655, pop, 0.5, 0.05, 100)
+problems = [kakuro_622655, kakuro_357465, kakuro_383659]
 
-pop = init_population(500, kakuro_357465)
-run_generations(kakuro_357465, pop, 0.5, 0.05, 100)
+
+def experiment_1():
+    for problem in problems:
+        pop = init_population(500, problem)
+        run_generations(problem, pop, 0.5, 0.05, 30)
+
+
+def experiment_2():
+    for problem in problems:
+        pop = init_population(500, problem)
+        run_generations(problem, pop, 1, 0.05, 30)
+
+
+def experiment_3():
+    for problem in problems:
+        pop = init_population(500, problem)
+        run_generations(problem, pop, 1, 0.2, 30)
+
+
+experiment_1()
+experiment_2()
+experiment_3()

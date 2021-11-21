@@ -1,5 +1,6 @@
 class Problem:
-    def __init__(self, length, row_constraints, col_constraints):
+    def __init__(self, serial_number, length, row_constraints, col_constraints):
+        self.serial_number = serial_number
         self.length = length
         self.row_constraints = row_constraints
         self.col_constraints = col_constraints
