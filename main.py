@@ -26,9 +26,3 @@ def experiment_3():
 # experiment_1()
 # experiment_2()
 # experiment_3()
-
-pop = init_population(500, kakuro_383659)
-run_generations(kakuro_383659, pop, 1, 0.2, 50)
-pop = init_population(500, kakuro_357465)
-run_generations(kakuro_357465, pop, 1, 0.2, 50)
-
