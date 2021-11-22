@@ -43,7 +43,7 @@ def run_generations(problem, population, chance_to_breed, mutation_chance, itera
     plt.plot([score/divider for score in worst_scores], color='red', label="Worst Fitness")
     plt.xlabel('Generations')
     plt.ylabel('Fitness')
-    plt.title(str(problem.serial_number) + ' - Fitness per generation')
+    plt.title(str(problem.serial_number) + ' - Fitness per generation. breeding/mutation = ' + str(chance_to_breed) + '/' + str(mutation_chance))
     plt.legend(loc='upper right')
     plt.show()
     plt.close()
