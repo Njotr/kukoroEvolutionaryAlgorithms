@@ -1,11 +1,15 @@
 import random
 import numpy as np
 
+from Utilities.cheatSheet import cheatSheet
+
 
 def init_individual(problem):
     random_list = []
     for row_constraint in problem.row_constraints:
-        random_list.extend(random.sample(range(1, 10), len(row_constraint.indices)))
+        num_array = list(map(int, str(random.sample(cheatSheet[len(row_constraint.indices) - 1][row_constraint.total], 1)[0])))
+        random.shuffle(num_array)
+        random_list.extend(num_array)
     return np.array(random_list)
 
 
