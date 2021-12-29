@@ -1,8 +1,6 @@
 import numpy as np
 from deap import gp, creator, base, tools
 from functools import partial
-from Utilities.generation import run_generations
-from Utilities.initiation import init_population
 
 
 def progn(*args):
@@ -17,11 +15,9 @@ def shuffle(out1, out2):
 def setup_environment(solver, train_problems):
     pset = gp.PrimitiveSet("main", 0)
     pset.addPrimitive(shuffle, 2)
-    # pset.addTerminal(kakuro.chooseEmptyEq)
-    pset.addTerminal(solver.chooseEmptyEq)
-    pset.addTerminal(solver.chooseAdjacentEq)
-    pset.addTerminal(solver.fillEmptyEq)
-    # pset.addTerminal(kakuro.fillEq)
+    pset.addTerminal(solver.fw)
+    pset.addTerminal(solver.down)
+    pset.addTerminal(solver.bw)
 
     creator.create("FitnessMax", base.Fitness, weights=(1.0,))
     creator.create("Individual", gp.PrimitiveTree, fitness=creator.FitnessMax)
